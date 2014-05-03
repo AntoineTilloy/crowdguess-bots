@@ -133,7 +133,7 @@ class Market:
   def spread(self):
     return self.bestAskPrice()-self.bestBidPrice()
   def spreadWithMe(self):
-    return self.myBestAskPrice()-self.myBestBidPrice()
+    return min([self.bestAskPrice(),self.myBestAskPrice()])-max([self.myBestBidPrice(),self.bestBidPrice()])
   def buy(self,volume,price):
     return SendOrder(self.API_key,self.id,1,volume,price)  
   def sell(self,volume,price):
