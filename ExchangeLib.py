@@ -103,13 +103,21 @@ class Market:
     for order in self.nob:
       if order['side']==1:
         bids.append(order['price'])
-    return max(bids)
+    if bids!=[]:
+      maxbids=max(bids)
+    else:
+      maxbids=0.0
+    return maxbids
   def bestAskPrice(self):
     asks=[]
     for order in self.nob:
       if order['side']==-1:
         asks.append(order['price'])
-    return min(asks)
+    if asks!=[]:
+      minasks=min(asks)
+    else:
+      minasks=100.0
+    return minasks
   def myBestBidPrice(self):
     bids=[]
     for order in self.limits:
